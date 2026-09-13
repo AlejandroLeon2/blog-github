@@ -1,46 +1,99 @@
-# Astro Starter Kit: Basics
+# Blog Teconológico
+
+Blog estático construido con Astro 7 y Tailwind CSS 4. Artículos sobre desarrollo, despliegue y herramientas para programadores.
+
+## Requisitos
+
+- Node >= 22.12.0
+- pnpm
+
+## Inicio rápido
 
 ```sh
-pnpm create astro@latest -- --template basics
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Abrí `localhost:4321` en el navegador.
 
-## 🚀 Project Structure
+## Comandos
 
-Inside of your Astro project, you'll see the following folders and files:
+| Comando | Acción |
+|---------|--------|
+| `pnpm install` | Instala dependencias |
+| `pnpm dev` | Servidor de desarrollo en `localhost:4321` |
+| `pnpm build` | Build de producción en `./dist/` |
+| `pnpm preview` | Preview del build local |
+| `pnpm astro check` | Type check |
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+## Estructura del proyecto
+
+```
+src/
+├── components/
+│   ├── atoms/          # Componentes base: Badge, FormattedDate, Footer, Metadata, TagList
+│   ├── molecules/      # Componentes compuestos: ArticleHeader, ArticleMeta, Aside, FilterBar, Hero, Pagination, PrevNext
+│   └── organisms/      # Componentes complejos: ArticleList, Header
+├── content/
+│   └── blog/           # Artículos en Markdown
+├── layouts/
+│   ├── Layout.astro    # Shell HTML base
+│   └── PublicLayout.astro  # Layout público con Header y Footer
+├── lib/
+│   └── routes.ts       # Rutas de navegación
+├── pages/
+│   ├── index.astro     # Home page
+│   └── blog/
+│       ├── [...page].astro   # Listado paginado
+│       └── [...slug].astro   # Detalle de artículo
+├── styles/
+│   └── global.css      # Tailwind CSS
+└── content.config.ts   # Schema de la colección blog
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Arquitectura
 
-## 🧞 Commands
+- **SSG puro** — todo se resuelve en build time, zero runtime
+- **Paginación** — `paginate()` genera páginas estáticas de 6 artículos
+- **Filtrado** — client-side en el FilterBar (búsqueda, categoría, tags)
+- **Contenido** — Markdown con frontmatter, consultado con `getCollection()`
 
-All commands are run from the root of the project, from a terminal:
+## Funcionalidades
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- Listado de artículos con paginación
+- Búsqueda por texto
+- Filtrado por categoría y tags
+- Artículo detalle con Markdown renderizado
+- Navegación prev/next entre artículos
+- Sidebar con estadísticas, categorías, tags populares y artículos recientes
+- Responsive (mobile y desktop)
+- SEO: Open Graph, Twitter cards, canonical URL
 
-## 👀 Want to learn more?
+## Contenido
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Los artículos se encuentran en `src/content/blog/`. Para agregar uno nuevo, creá un archivo `.md` con este frontmatter:
+
+```yaml
+---
+title: "Título del artículo"
+description: "Descripción corta"
+pubDate: 2026-01-01
+category: "framework"
+tags: ["astro", "framework"]
+---
+
+Contenido del artículo en Markdown.
+```
+
+## Deploy
+
+El build genera archivos estáticos en `./dist/`. Subilo a cualquier hosting estático:
+
+- **Vercel**: conectá el repo y detecta Astro automáticamente
+- **Netlify**: configurá build command `pnpm build` y publish directory `dist`
+- **GitHub Pages**: usá GitHub Actions con `pnpm build`
+
+## Documentación
+
+- [Astro Docs](https://docs.astro.build)
+- [Tailwind CSS](https://tailwindcss.com)

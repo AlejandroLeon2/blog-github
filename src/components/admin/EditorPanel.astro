@@ -1,0 +1,22 @@
+---
+import Button from "../atoms/Button.astro";
+import FormField from "../atoms/FormField.astro";
+import FileToolbar from "./FileToolbar.astro";
+import FrontmatterForm from "./FrontmatterForm.astro";
+---
+
+<div class="flex flex-col gap-4">
+  <FileToolbar />
+
+  <hr class="border-gray-200" />
+
+  <FrontmatterForm />
+
+  <FormField label="Contenido">
+    <div id="milkdown-editor" class="border border-gray-300 rounded-lg overflow-hidden min-h-[300px]"></div>
+  </FormField>
+
+  <textarea id="content" class="hidden"></textarea>
+
+  <Button id="save">Guardar en GitHub</Button>
+</div>

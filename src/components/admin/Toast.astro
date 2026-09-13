@@ -1,0 +1,42 @@
+---
+---
+
+<div
+  id="toast"
+  class="fixed bottom-4 right-4 px-4 py-3 rounded-lg shadow-lg text-sm font-medium transition-all duration-300 translate-y-20 opacity-0 z-50"
+>
+  <span id="toast-message"></span>
+</div>
+
+<script>
+  const toast = document.getElementById("toast")!;
+  const toastMessage = document.getElementById("toast-message")!;
+  let hideTimeout: ReturnType<typeof setTimeout>;
+
+  type ToastVariant = "success" | "error" | "info";
+
+  const variants: Record<ToastVariant, string[]> = {
+    success: ["bg-green-600", "text-white"],
+    error: ["bg-red-600", "text-white"],
+    info: ["bg-gray-800", "text-white"],
+  };
+
+  const allVariantClasses = Object.values(variants).flat();
+
+  function showToast(msg: string, variant: ToastVariant = "info") {
+    clearTimeout(hideTimeout);
+    toast.classList.remove(...allVariantClasses);
+    toast.classList.add(...variants[variant]);
+    toastMessage.textContent = msg;
+    toast.classList.remove("translate-y-20", "opacity-0");
+
+    hideTimeout = setTimeout(() => {
+      toast.classList.add("translate-y-20", "opacity-0");
+    }, 4000);
+  }
+
+  // Listen for toast events dispatched by toast.ts
+  window.addEventListener("app:toast", ((e: CustomEvent) => {
+    showToast(e.detail.msg, e.detail.variant);
+  }) as EventListener);
+</script>

@@ -1,0 +1,36 @@
+---
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import LoginForm from "../../components/admin/LoginForm.astro";
+import DashboardHeader from "../../components/admin/DashboardHeader.astro";
+import EditorPanel from "../../components/admin/EditorPanel.astro";
+import OutputLog from "../../components/admin/OutputLog.astro";
+import Toast from "../../components/admin/Toast.astro";
+import ImageUploadModal from "../../components/admin/ImageUploadModal.astro";
+import { OWNER, REPO } from "../../lib/config";
+---
+
+<AdminLayout>
+  <LoginForm />
+
+  <section id="cms" hidden>
+    <DashboardHeader repo={`${OWNER}/${REPO}`} />
+    <EditorPanel />
+  </section>
+
+  <OutputLog />
+  <Toast />
+  <ImageUploadModal />
+</AdminLayout>
+
+<script>
+  import { GitHubClient } from "../../lib/github-client";
+  import { EditorManager } from "../../lib/editor-manager";
+  import { CMS } from "../../lib/cms";
+
+  console.log("[Admin] script loaded, DOM ready");
+
+  // Astro scripts run after DOM is parsed — no need for DOMContentLoaded
+  const cms = new CMS(new GitHubClient(), new EditorManager("milkdown-editor", "content"));
+  console.log("[Admin] CMS instance created, calling autoLogin...");
+  cms.autoLogin();
+</script>

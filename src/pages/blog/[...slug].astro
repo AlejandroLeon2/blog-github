@@ -1,0 +1,39 @@
+---
+// ========================================================
+// TAREA J1 — Página de Detalle de Artículo
+// ========================================================
+//
+// Archivo: src/pages/blog/[...slug].astro
+// Ruta dinámica: captura el slug de la URL
+//
+// Qué hace este archivo:
+// Cuando un usuario navega a /blog/por-que-astro,
+// este archivo busca ese artículo y lo muestra completo.
+//
+// Pasos para completar:
+//
+// 1. Importá getCollection y render desde "astro:content"
+// 2. Importá PublicLayout desde "../../layouts/PublicLayout.astro"
+// 3. Importá ArticleHeader desde "../../components/molecules/ArticleHeader.astro"
+//
+// 4. Exportá getStaticPaths():
+//    - Llamá a getCollection("blog") para traer todos los artículos
+//    - Iterá cada artículo con .map() y para cada uno retorná:
+//      { params: { slug: post.id }, props: { post } }
+//
+// 5. Después de los ---:
+//    - Extraé post de Astro.props
+//    - Llamá a render(post) y destructurá Content
+//
+// 6. Creá el template:
+//    - PublicLayout como wrapper con el título del artículo
+//    - Dentro: <article> con ArticleHeader y <Content />
+//
+// Archivos de referencia:
+// - src/content.config.ts → schema de la colección blog
+// - src/layouts/PublicLayout.astro → layout con Header/Footer
+// - src/components/molecules/ArticleHeader.astro → encabezado
+// ========================================================
+---
+
+<!-- TODO: Creá el template del artículo después de implementar getStaticPaths -->

@@ -1,0 +1,15 @@
+---
+import Select from "../atoms/Select.astro";
+import Button from "../atoms/Button.astro";
+---
+
+<div class="flex gap-2">
+  <Select
+    id="fm-heroImage"
+    options={[{ value: "", label: "Sin imagen" }]}
+    class="flex-1"
+  />
+  <Button id="upload-image-btn" variant="secondary" class="whitespace-nowrap">
+    Subir imagen
+  </Button>
+</div>

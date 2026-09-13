@@ -1,0 +1,29 @@
+---
+interface Props {
+  tags: string[];
+  class?: string;
+  variant?: "default" | "interactive";
+  href?: string;
+}
+
+const { tags, class: className, variant = "default", href = "/blog" } = Astro.props;
+---
+
+{tags.length > 0 && (
+  <div class:list={["flex flex-wrap gap-2", className]}>
+    {tags.map((tag) =>
+      variant === "interactive" ? (
+        <a
+          href={`${href}?tag=${encodeURIComponent(tag)}`}
+          class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full hover:bg-blue-200 transition-colors"
+        >
+          {tag}
+        </a>
+      ) : (
+        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+          {tag}
+        </span>
+      )
+    )}
+  </div>
+)}

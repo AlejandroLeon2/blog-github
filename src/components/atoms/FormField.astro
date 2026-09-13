@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  for?: string;
+  class?: string;
+}
+
+const { label, for: forAttr, class: className } = Astro.props;
+---
+
+<div class:list={["flex flex-col gap-1", className]}>
+  <label for={forAttr} class="block text-xs font-medium text-gray-500">
+    {label}
+  </label>
+  <slot />
+</div>

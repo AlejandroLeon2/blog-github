@@ -1,0 +1,51 @@
+---
+// ========================================================
+// TAREA JC1 — Componente FilterBar (Filtros)
+// ========================================================
+//
+// Archivo: src/components/molecules/FilterBar.astro
+//
+// Qué hace este componente:
+// Barra de búsqueda y filtros para el listado de artículos.
+// Tiene 3 partes: input de búsqueda, botones de categoría, botones de tags.
+// El script cliente filtra los artículos sin recargar la página.
+//
+// Esta tarea se divide en 2 partes:
+// - JC1.1: Estructura HTML (frontmatter + template, sin script)
+// - JC1.2: Script cliente (agregar <script> al final)
+//
+// PASOS PARA JC1.1 — ESTRUCTURA HTML:
+//
+// 1. Definí interfaz de props:
+//    - articles: array con slug, title, date, tags, category, description
+//
+// 2. Extraé categorías y tags únicos:
+//    - categories: Set de articles.map(a => a.category).filter(Boolean)
+//    - allTags: Set de articles.flatMap(a => a.tags ?? []).sort()
+//
+// 3. Creá el template:
+//    - Contenedor con id="filter-bar"
+//    - Input de búsqueda con id="filter-search" e ícono de lupa
+//    - Botones de categoría con data-filter="category" y data-value
+//    - Botones de tags con data-filter="tag" y data-value
+//    - Div oculto para filtros activos con id="active-filters"
+//
+// PASOS PARA JC1.2 — SCRIPT CLIENTE:
+//
+// 4. Agregá <script> al final del archivo
+// 5. Obtené referencias al DOM (input, botones, contenedor de artículos)
+// 6. Definí estado: activeCategory (string) y activeTags (Set)
+// 7. Creá función applyFilters():
+//    - Para cada [data-article], leé data-title, data-description,
+//      data-category, data-tags
+//    - Compatá contra filtros activos
+//    - Si no coincide, poné display: none
+// 8. Agregá event listeners al input y a los botones
+//
+// Archivos de referencia:
+// - src/content.config.ts → schema de blog (category, tags)
+// - src/components/organisms/ArticleList.astro → data attributes
+// ========================================================
+---
+
+<!-- TODO: Estructura HTML del FilterBar — ver comentarios arriba para pasos -->

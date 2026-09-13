@@ -1,0 +1,18 @@
+---
+import Input from "../atoms/Input.astro";
+import Button from "../atoms/Button.astro";
+import FormField from "../atoms/FormField.astro";
+---
+
+<section id="login" class="max-w-md mx-auto mt-12">
+  <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+    <h2 class="text-lg font-semibold text-gray-900 mb-2">Conectar con GitHub</h2>
+    <p class="text-sm text-gray-500 mb-4">Introduce tu Personal Access Token con permisos de lectura/escritura en el repositorio.</p>
+    <div class="flex flex-col gap-3">
+      <FormField label="Token">
+        <Input type="password" placeholder="ghp_xxxxxxxxxxxx" id="token" />
+      </FormField>
+      <Button id="connect">Conectar</Button>
+    </div>
+  </div>
+</section>

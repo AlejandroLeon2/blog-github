@@ -1,0 +1,38 @@
+---
+import FormattedDate from "../atoms/FormattedDate.astro";
+import TagList from "../atoms/TagList.astro";
+
+interface Props {
+  slug: string;
+  title: string;
+  date: string;
+  tags?: string[];
+  category?: string;
+  description?: string;
+}
+
+const { slug, title, date, tags = [], category, description } = Astro.props;
+---
+
+<article class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+  <h2 class="text-lg font-semibold text-gray-900">
+    <a href={`/blog/${slug}`} class="hover:text-blue-600">
+      {title}
+    </a>
+  </h2>
+  {description && (
+    <p class="text-sm text-gray-600 mt-1">{description}</p>
+  )}
+  <div class="flex items-center gap-3 mt-2">
+    <FormattedDate date={date} />
+    {category && (
+      <a
+        href={`/blog?category=${encodeURIComponent(category)}`}
+        class="text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full hover:bg-gray-200 transition-colors capitalize"
+      >
+        {category}
+      </a>
+    )}
+  </div>
+  <TagList tags={tags} class="mt-2" variant="interactive" />
+</article>

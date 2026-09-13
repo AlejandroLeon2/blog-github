@@ -1,0 +1,14 @@
+---
+interface Props {
+  content: string;
+  wordsPerMinute?: number;
+}
+
+const { content, wordsPerMinute = 200 } = Astro.props;
+
+const plainText = content.replace(/[#*_`~\[\]()>-]/g, "").trim();
+const wordCount = plainText.split(/\s+/).length;
+const minutes = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+---
+
+<span class="text-sm text-gray-500">{minutes} min de lectura</span>

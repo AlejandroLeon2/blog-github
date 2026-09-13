@@ -1,0 +1,23 @@
+---
+import Button from "../atoms/Button.astro";
+import Input from "../atoms/Input.astro";
+import Select from "../atoms/Select.astro";
+---
+
+<div class="flex flex-col gap-2">
+  <!-- File selection row -->
+  <div class="flex flex-col sm:flex-row gap-2">
+    <Select
+      options={[{ value: "", label: "Selecciona un archivo" }]}
+      id="files"
+      class="flex-1"
+    />
+    <Input placeholder="nombre-del-articulo" id="filename" class="flex-1" />
+  </div>
+
+  <!-- Action buttons -->
+  <div class="flex gap-2">
+    <Button id="newFile">Nuevo</Button>
+    <Button variant="danger" id="delete">Eliminar</Button>
+  </div>
+</div>

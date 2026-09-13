@@ -1,0 +1,38 @@
+---
+// ========================================================
+// TAREA JC1.3 — Componente Pagination (Paginación)
+// ========================================================
+//
+// Archivo: src/components/molecules/Pagination.astro
+//
+// Qué hace este componente:
+// Muestra links para navegar entre páginas del listado.
+// "← Anterior" / números de página / "Siguiente →"
+//
+// Pasos para completar:
+//
+// 1. Importá el tipo Page desde "astro"
+//
+// 2. Definí interfaz Props con page de tipo Page
+//
+// 3. Extraé currentPage y lastPage de page
+//
+// 4. Creá función getPageNumbers():
+//    - Si lastPage <= 7: retorne todas las páginas
+//    - Si no: retorne [1, ..., currentPage-1, currentPage, currentPage+1, ..., lastPage]
+//    - Pone "..." donde hay huecos
+//
+// 5. Creá el template:
+//    - Solo se renderiza si lastPage > 1
+//    - Nav centrado con:
+//      · Botón anterior: <a> si page.url.prev existe, <span> si no
+//      · Números de página: itera getPageNumbers()
+//      · Botón siguiente: <a> si page.url.next existe, <span> si no
+//    - Página 1 va a /blog, las demás a /blog/{page}
+//
+// Archivos de referencia:
+// - astro (módulo) → exporta el tipo Page
+// ========================================================
+---
+
+<!-- TODO: Creá el template de paginación — ver comentarios arriba para pasos -->

@@ -1,0 +1,46 @@
+---
+// ========================================================
+// TAREA J2 — Página de Lista Paginada
+// ========================================================
+//
+// Archivo: src/pages/blog/[...page].astro
+// Ruta dinámica: captura el número de página de la URL
+//
+// Qué hace este archivo:
+// Muestra los artículos del blog divididos en páginas de 6.
+// /blog/ es página 1, /blog/2/ es página 2, etc.
+//
+// Pasos para completar:
+//
+// 1. Importá getCollection desde "astro:content"
+// 2. Importá PaginateFunction desde "astro"
+// 3. Importá PublicLayout, FilterBar, ArticleList, Pagination, Aside
+//
+// 4. Exportá getStaticPaths({ paginate }):
+//    - Traé artículos con getCollection("blog")
+//    - Ordenalos por pubDate descendente
+//    - Mapéalos a: { slug, title, date, tags, category, description }
+//    - Retorná paginate(articles, { pageSize: 6 })
+//
+// 5. Después de los ---:
+//    - Extraé page de Astro.props
+//    - Creá allArticles con page.data
+//
+// 6. Creá el template:
+//    - PublicLayout con título condicional (agregá número si no es página 1)
+//    - Layout flex: contenido principal + sidebar
+//    - Contenido: FilterBar, ArticleList, Pagination (en ese orden)
+//    - Sidebar: Aside con allArticles
+//
+// NOTA: FilterBar y Pagination los crea Jhoel en JC1.
+//       Aside lo crea Robert en JR1.
+//       Si no existen todavía, creá versiones vacías para que compile.
+//
+// Archivos de referencia:
+// - src/content.config.ts → schema de la colección
+// - src/layouts/PublicLayout.astro → layout con Header/Footer
+// - src/components/organisms/ArticleList.astro → lista de artículos
+// ========================================================
+---
+
+<!-- TODO: Creá el template del listado paginado después de implementar getStaticPaths -->

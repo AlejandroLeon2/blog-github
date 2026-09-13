@@ -1,0 +1,44 @@
+---
+import Input from "../atoms/Input.astro";
+import Select from "../atoms/Select.astro";
+import FormField from "../atoms/FormField.astro";
+import ImagePicker from "./ImagePicker.astro";
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+  <FormField label="Título" class="sm:col-span-2">
+    <Input id="fm-title" placeholder="Título del artículo" />
+  </FormField>
+
+  <FormField label="Descripción" class="sm:col-span-2">
+    <Input id="fm-description" placeholder="Descripción corta para SEO" />
+  </FormField>
+
+  <FormField label="Fecha">
+    <Input type="date" id="fm-pubDate" />
+  </FormField>
+
+  <FormField label="Categoría">
+    <Select
+      id="fm-category"
+      options={[
+        { value: "general", label: "General" },
+        { value: "deploy", label: "Deploy" },
+        { value: "devops", label: "DevOps" },
+        { value: "framework", label: "Framework" },
+        { value: "herramientas", label: "Herramientas" },
+        { value: "tutorial", label: "Tutorial" },
+      ]}
+    />
+  </FormField>
+
+  <FormField label="Imagen" class="sm:col-span-2">
+    <ImagePicker />
+  </FormField>
+
+  <FormField label="Tags (separados por coma)" class="sm:col-span-2">
+    <Input id="fm-tags" placeholder="astro, deploy, hosting" />
+  </FormField>
+</div>
+
+<hr class="border-gray-200 mb-4" />

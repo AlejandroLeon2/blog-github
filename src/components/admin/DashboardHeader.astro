@@ -1,0 +1,21 @@
+---
+import Button from "../atoms/Button.astro";
+
+interface Props {
+  repo: string;
+}
+
+const { repo } = Astro.props;
+---
+
+<header class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-gray-200 pb-4 mb-6">
+  <div class="flex flex-col">
+    <span class="text-xs text-gray-500">Usuario</span>
+    <strong id="user" class="text-sm text-gray-900"></strong>
+  </div>
+  <div class="flex flex-col sm:text-right">
+    <span class="text-xs text-gray-500">Repositorio</span>
+    <strong class="text-sm text-gray-900">{repo}</strong>
+  </div>
+  <Button variant="secondary" id="logout">Desconectar</Button>
+</header>
